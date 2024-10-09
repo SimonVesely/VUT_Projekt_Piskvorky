@@ -4,7 +4,13 @@
 **Vojtěch Šafář** - 270292
 ## O projektu:
 1. Princip a funkce hry:
+
+Struktura projektu:
+
+Výběr herních módů:
+
 2. Jak hru spustit/verze hry pro Windows,Linux/MacOS<br>
+
 Na Windows otevřeme project ve IDE Visual Studio 2022 a spustíme, jedná se o normální CMakeProject
 
 Pro Linux/MacOS lze samostatně kompilovat main.c, a poté jej spustit v terminálu
