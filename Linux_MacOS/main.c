@@ -1,6 +1,7 @@
+#include "hxh.h"
+#include "mylib.h"
 #include <stdio.h>
 #include <unistd.h> // čas
-#include "mylib.h"
 
 int main() {
   char choice = ' ';
@@ -10,6 +11,7 @@ int main() {
     scanf("%c", &choice);
     switch (choice) {
     case 1:
+      humanXhuman();
       break;
     case 2:
       break;
