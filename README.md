@@ -4,6 +4,7 @@
 **Vojtěch Šafář** - 270292
 ## O projektu:
 1. Princip a funkce hry:
+<img src="images/hlavni_menu.png" alt="Hlavní menu" width="600" height="350">
 
 Struktura projektu:
 

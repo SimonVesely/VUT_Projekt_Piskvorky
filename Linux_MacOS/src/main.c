@@ -15,7 +15,11 @@ int main() {
       break;
     case '2':
       printf("Work in progress\n");
-        sleep(2);
+      sleep(2);
+      break;
+    case '3':
+      printf("Work in progress\n");
+      sleep(2);
       break;
     case 'q':
       goodbye();
