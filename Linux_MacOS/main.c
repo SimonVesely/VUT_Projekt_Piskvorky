@@ -1,18 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-void clearScreen() { system("clear"); }
-
-void welcome() {
-  printf("Vyber si styl hry:\n1) Hráč x Hráč\n2) Hráč x AI\nQ) Odejít z "
-         "programu\n");
-}
-
-void goodbye() {
-  clearScreen();
-  printf("Ďakujem za zahrání gamesky\n");
-}
+#include <unistd.h> // čas
+#include "mylib.h"
 
 int main() {
   char choice = ' ';
