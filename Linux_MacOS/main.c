@@ -4,16 +4,16 @@
 #include <unistd.h> // čas
 
 int main() {
-  char choice = ' ';
-  while (choice != 'q' && choice != 'Q') {
+  char choice[] = "";
+  while (choice[0] != 'q' && choice[0] != 'Q') {
     clearScreen();
     welcome();
-    scanf("%c", &choice);
-    switch (choice) {
-    case 1:
+    scanf("%s", choice);
+    switch (choice[0]) {
+    case '1':
       humanXhuman();
       break;
-    case 2:
+    case '2':
       break;
     case 'q':
       goodbye();
@@ -24,7 +24,6 @@ int main() {
     default:
       printf("Špatně vložený input\n");
       sleep(2);
-      break;
     }
   }
   return 0;
