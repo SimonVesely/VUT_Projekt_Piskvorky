@@ -1,4 +1,4 @@
-#include "mylib.h"
+#include "../include/mylib.h"
 #include <stdio.h>
 #include <unistd.h>
 

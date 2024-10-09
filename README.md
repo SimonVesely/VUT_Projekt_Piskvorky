@@ -15,6 +15,6 @@ Na Windows otevřeme project ve IDE Visual Studio 2022 a spustíme, jedná se o 
 
 Pro Linux/MacOS lze samostatně kompilovat main.c, a poté jej spustit v terminálu
 ```
-gcc main.c -o main
-./main
+gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c -o bin/main
+./bin/main
 ```

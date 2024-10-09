@@ -1,5 +1,5 @@
-#include "hxh.h"
-#include "mylib.h"
+#include "../include/hxh.h"
+#include "../include/mylib.h"
 #include <stdio.h>
 #include <unistd.h> // čas
 
