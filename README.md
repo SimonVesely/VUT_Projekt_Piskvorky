@@ -7,6 +7,11 @@
 
 Struktura projektu:
 
+1.
+
+2. Linux/MacOS
+<img src="images/struktura_linux:macos.png" alt="struktura-Linux/MacOS" width="200" height="300">
+
 Výběr herních módů:
 
 2. Jak hru spustit/verze hry pro Windows,Linux/MacOS<br>
