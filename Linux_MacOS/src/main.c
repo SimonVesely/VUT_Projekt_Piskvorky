@@ -14,6 +14,8 @@ int main() {
       humanXhuman();
       break;
     case '2':
+      printf("Work in progress\n");
+        sleep(2);
       break;
     case 'q':
       goodbye();
