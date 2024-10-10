@@ -5,7 +5,7 @@
 
 int main() {
   char choice[] = "";
-  while (choice[0] != 'q' && choice[0] != 'Q') {
+  while (choice[0] != '4') {
     clearScreen();
     welcome();
     scanf("%s", choice);
@@ -21,10 +21,7 @@ int main() {
       printf("Work in progress\n");
       sleep(2);
       break;
-    case 'q':
-      goodbye();
-      break;
-    case 'Q':
+    case '4':
       goodbye();
       break;
     default:

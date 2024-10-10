@@ -11,7 +11,7 @@ void welcome() {
          "└─────────────────────────┘"
          "\n");
   printf(
-      "Vyber si styl hry:\n1) Hráč x Hráč\n2) Hráč x AI\n3) Návod\nQ) Odejít z "
+      "Vyber si styl hry:\n1) Hráč x Hráč\n2) Hráč x AI\n3) Návod\n4) Odejít z "
       "programu\n");
 }
 
