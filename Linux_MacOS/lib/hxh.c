@@ -3,10 +3,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
+#define MAGENTA "\033[35m"
+#define CYAN "\033[36m"
 
 void humanXhuman() {
   clearScreen();
-  int rows = 3, cols = 3, pocetTahu = 0, aktHrac = 1, konecHry = 0;
+  int rows = 3, cols = 3, pocetTahu = 0, aktHrac = 1, konecHry = 0, remiza = 0;
   char jmeno1[256], jmeno2[256], choice[256], empty[256];
   char a1[] = "   ", a2[] = "   ", a3[] = "   ", b1[] = "   ", b2[] = "   ",
        b3[] = "   ", c1[] = "   ", c2[] = "   ", c3[] = "   ";
@@ -29,7 +36,7 @@ void humanXhuman() {
            " -----------       |           -------------- \n",
            a1, a2, a3, b1, b2, b3, c1, c2, c3);
 
-    printf("\n\nHráč č.1 X: %s     Hráč č.2 O: %s", jmeno1, jmeno2);
+    printf("\n\nHráč č.1: %s |"RED"X"RESET"|    Hráč č.2: %s |"BLUE"O"RESET"|", jmeno1, jmeno2);
     if (aktHrac == 1) {
       printf("\n\nVýběr pole: (Hráč č.%d/%s): ", aktHrac, jmeno1);
       scanf("%s", choice);
@@ -242,6 +249,10 @@ void humanXhuman() {
         break;
       }
       break;
+    case 'q':
+      return;
+    case 'Q':
+      return;
     default:
       printf("Špatný vstup!\n");
       sleep(1);
@@ -253,12 +264,17 @@ void humanXhuman() {
       break;
     }
     konecHry = checker(konecHry, a1, a2, a3, b1, b2, b3, c1, c2, c3);
+    remiza = draw(a1, a2, a3, b1, b2, b3, c1, c2, c3);
   }
   clearScreen();
-  if (aktHrac == 2) {
-    printf("Gratulujeme, vyhrál hráč č.1, %s\n", jmeno1);
+  if (remiza == 1) {
+    printf("Nastala remíza, chcete opakovat hru nebo odejít do menu: ");
   } else {
-    printf("Gratulujeme, vyhrál hráč č.2, %s\n", jmeno2);
+    if (aktHrac == 2) {
+      printf("Gratulujeme, vyhrál hráč č.1, %s\n", jmeno1);
+    } else {
+      printf("Gratulujeme, vyhrál hráč č.2, %s\n", jmeno2);
+    }
   }
   scanf("%s", empty);
   return;

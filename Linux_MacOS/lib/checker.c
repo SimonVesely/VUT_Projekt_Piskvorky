@@ -48,6 +48,16 @@ int checker(int konec, char a1[], char a2[], char a3[], char b1[], char b2[], ch
   if (a3[1]=='O' && b2[1]=='O' && c1[1]=='O'){
     return 1;
   }
+  if ( a1[1]!=' ' && a2[1]!=' ' && a3[1]!=' ' && b1[1]!=' ' && b2[1]!=' ' && b3[1]!=' ' && c1[1]!=' ' && c2[1]!=' ' && c3[1]!=' ') {
+    return 1;
+  }
 
+  return 0;
+}
+
+int draw(char a1[], char a2[], char a3[], char b1[], char b2[], char b3[], char c1[], char c2[], char c3[]) {
+  if ( a1[1]!=' ' && a2[1]!=' ' && a3[1]!=' ' && b1[1]!=' ' && b2[1]!=' ' && b3[1]!=' ' && c1[1]!=' ' && c2[1]!=' ' && c3[1]!=' ') {
+    return 1;
+  }
   return 0;
 }
