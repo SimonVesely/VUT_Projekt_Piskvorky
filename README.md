@@ -16,13 +16,13 @@
 2. Linux/MacOS
 <img src="images/struktura_linux:macos.png" alt="struktura-Linux/MacOS" width="200" height="300">
 
-
+<br>
 **Spuštění hry:**
 
 1. Windows
 
 Na Windows otevřeme project ve IDE Visual Studio 2022 a spustíme, jedná se o normální CMakeProject
-
+<br>
 
 2. Linux/MacOS
    
@@ -34,14 +34,14 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c -o bin/main
 **Výběr herních módů:**
 
 1. Jakmile hru spustíme, vyskočí na nás okno s výběrem stylu hry
-
+<br>
 2. K dispozici jsou 2 herní režimy: Hráč proti hráči
                                     Hráč proti AI
-
+<br>
 3. Také je zde možnost návodu, kde se nachází kompletní informace o hře Piškvorky
-
+<br>
 4. Jako čtvrtá možnost je zde vypnutí hry
-
+<br>
 
 **Styly hry:**
 
