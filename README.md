@@ -50,7 +50,7 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c -o bin/main
    Uživatel si na začátku bude muset zvolit jméno a poté se mu otevře hra
 
    Tento styl hry funguje pomocí loopu s proměnnou if, else
-
+<br>
 
 3. Jako druhý styl hry je zde Hráč proti AI
    ...
