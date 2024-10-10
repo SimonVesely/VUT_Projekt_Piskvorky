@@ -43,6 +43,16 @@ void humanXhuman() {
     case 'a':
       switch (choice[1]) {
       case '1':
+        if (a1[1] == 'X' || a1[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(a1, " X ");
           break;
@@ -51,6 +61,16 @@ void humanXhuman() {
           break;
         }
       case '2':
+        if (a2[1] == 'X' || a2[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(a2, " X ");
           break;
@@ -59,6 +79,16 @@ void humanXhuman() {
           break;
         }
       case '3':
+        if (a3[1] == 'X' || a3[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(a3, " X ");
           break;
@@ -80,6 +110,16 @@ void humanXhuman() {
     case 'b':
       switch (choice[1]) {
       case '1':
+        if (b1[1] == 'X' || b1[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(b1, " X ");
           break;
@@ -88,6 +128,16 @@ void humanXhuman() {
           break;
         }
       case '2':
+        if (b2[1] == 'X' || b2[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(b2, " X ");
           break;
@@ -96,6 +146,16 @@ void humanXhuman() {
           break;
         }
       case '3':
+        if (b3[1] == 'X' || b3[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(b3, " X ");
           break;
@@ -117,6 +177,16 @@ void humanXhuman() {
     case 'c':
       switch (choice[1]) {
       case '1':
+        if (c1[1] == 'X' || c1[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(c1, " X ");
           break;
@@ -125,6 +195,16 @@ void humanXhuman() {
           break;
         }
       case '2':
+        if (c2[1] == 'X' || c2[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(c2, " X ");
           break;
@@ -133,6 +213,16 @@ void humanXhuman() {
           break;
         }
       case '3':
+        if (c3[1] == 'X' || c3[1] == 'O') {
+          printf("Toto pole už bylo zvoleno!\n");
+          sleep(1);
+          if (aktHrac == 2) {
+            aktHrac = 1;
+          } else {
+            aktHrac = 2;
+          }
+          break;
+        }
         if (aktHrac == 2) {
           strcpy(c3, " X ");
           break;
@@ -150,7 +240,7 @@ void humanXhuman() {
         }
         break;
       }
-    default:
+      break;    default:
       printf("Špatný vstup!\n");
       sleep(1);
       if (aktHrac == 2) {
