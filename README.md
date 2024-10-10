@@ -5,15 +5,16 @@
 ## O projektu:
 1. **Grafické rozhraní hry:**
 <img src="images/hlavni_menu.png" alt="Hlavní menu" width="600" height="350">
+(vlozit jeste hlavni obrazovku hry, s těma políčkama)
 <br>
+
 **Struktura projektu:**
 
 1. Windows
 ....<br>
 
 
-
-2. Linux/MacOS
+3. Linux/MacOS
 <img src="images/struktura_linux:macos.png" alt="struktura-Linux/MacOS" width="200" height="300">
 
 <br>
@@ -24,7 +25,6 @@
 
 Na Windows otevřeme project ve IDE Visual Studio 2022 a spustíme, jedná se o normální CMakeProject
 <br>
-
 2. Linux/MacOS
    
 Pro Linux/MacOS lze samostatně kompilovat main.c, a poté jej spustit v terminálu
@@ -37,12 +37,11 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c -o bin/main
 **Výběr herních módů:**
 <br>
 1. Jakmile hru spustíme, vyskočí na nás okno s výběrem stylu hry
-<br>
 2. K dispozici jsou 2 herní režimy: Hráč proti hráči
                                     Hráč proti AI
-<br>
+
 3. Také je zde možnost návodu, kde se nachází kompletní informace o hře Piškvorky
-<br>
+
 4. Jako čtvrtá možnost je zde vypnutí hry
 <br>
 
@@ -55,16 +54,19 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c -o bin/main
    Tento styl hry funguje pomocí loopu s proměnnou if, else
 <br>
 
-3. Jako druhý styl hry je zde Hráč proti AI
+2. Jako druhý styl hry je zde Hráč proti AI
    ...
    ...
    ...
+<br>
 
-4. Návod
+3. Návod
 
    (Zde bude ctrlC ctrlV z té samotne appky)
+<br>
 
-6. Vypnutí hry
+4. Vypnutí hry
+   
 
    Hra se po zvolení této možnosti vypne pomocí funkce: goodbye
 
