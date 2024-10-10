@@ -1,3 +1,4 @@
+#include "../include/checker.h"
 #include "../include/mylib.h"
 #include <stdio.h>
 #include <string.h>
@@ -5,8 +6,8 @@
 
 void humanXhuman() {
   clearScreen();
-  int rows = 3, cols = 3, pocetTahu = 0, aktHrac = 1;
-  char jmeno1[256], jmeno2[256], choice[256];
+  int rows = 3, cols = 3, pocetTahu = 0, aktHrac = 1, konecHry = 0;
+  char jmeno1[256], jmeno2[256], choice[256], empty[256];
   char a1[] = "   ", a2[] = "   ", a3[] = "   ", b1[] = "   ", b2[] = "   ",
        b3[] = "   ", c1[] = "   ", c2[] = "   ", c3[] = "   ";
   printf("Zadej jméno hráč č.1: ");
@@ -15,7 +16,7 @@ void humanXhuman() {
   printf("Zadej jméno hráč č.2: ");
   scanf("%s", jmeno2);
 
-  while (pocetTahu != 9) {
+  while (konecHry == 0) {
     clearScreen();
     int x = 0, y = 0;
     printf("Hrací pole:        |           Ukázkové pole:\n"
@@ -240,7 +241,8 @@ void humanXhuman() {
         }
         break;
       }
-      break;    default:
+      break;
+    default:
       printf("Špatný vstup!\n");
       sleep(1);
       if (aktHrac == 2) {
@@ -250,6 +252,14 @@ void humanXhuman() {
       }
       break;
     }
+    konecHry = checker(konecHry, a1, a2, a3, b1, b2, b3, c1, c2, c3);
   }
+  clearScreen();
+  if (aktHrac == 2) {
+    printf("Gratulujeme, vyhrál hráč č.1, %s\n", jmeno1);
+  } else {
+    printf("Gratulujeme, vyhrál hráč č.2, %s\n", jmeno2);
+  }
+  scanf("%s", empty);
   return;
 }

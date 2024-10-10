@@ -1,3 +1,53 @@
-void checker(char a1[], char a2[], char a3[], char b1[], char b2[], char b3[], char c1[], char c2[], char c3[]) {
-  return;
+int checker(int konec, char a1[], char a2[], char a3[], char b1[], char b2[], char b3[], char c1[], char c2[], char c3[]) {
+  if (a1[1]=='X' && a2[1]=='X' && a3[1]=='X'){
+    return 1;
+  }
+  if (b1[1]=='X' && b2[1]=='X' && b3[1]=='X'){
+    return 1;
+  }
+  if (c1[1]=='X' && c2[1]=='X' && c3[1]=='X'){
+    return 1;
+  }
+  if (a1[1]=='X' && b1[1]=='X' && c1[1]=='X'){
+    return 1;
+  }
+  if (a2[1]=='X' && b2[1]=='X' && c2[1]=='X'){
+    return 1;
+  }
+  if (a3[1]=='X' && b3[1]=='X' && c3[1]=='X'){
+    return 1;
+  }
+  if (a1[1]=='X' && b2[1]=='X' && c3[1]=='X'){
+    return 1;
+  }
+  if (a3[1]=='X' && b2[1]=='X' && c1[1]=='X'){
+    return 1;
+  }
+
+  if (a1[1]=='O' && a2[1]=='O' && a3[1]=='O'){
+    return 1;
+  }
+  if (b1[1]=='O' && b2[1]=='O' && b3[1]=='O'){
+    return 1;
+  }
+  if (c1[1]=='O' && c2[1]=='O' && c3[1]=='O'){
+    return 1;
+  }
+  if (a1[1]=='O' && b1[1]=='O' && c1[1]=='O'){
+    return 1;
+  }
+  if (a2[1]=='O' && b2[1]=='O' && c2[1]=='O'){
+    return 1;
+  }
+  if (a3[1]=='O' && b3[1]=='O' && c3[1]=='O'){
+    return 1;
+  }
+  if (a1[1]=='O' && b2[1]=='O' && c3[1]=='O'){
+    return 1;
+  }
+  if (a3[1]=='O' && b2[1]=='O' && c1[1]=='O'){
+    return 1;
+  }
+
+  return 0;
 }
