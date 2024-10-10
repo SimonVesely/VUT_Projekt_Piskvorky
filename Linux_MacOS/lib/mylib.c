@@ -12,7 +12,7 @@ void welcome() {
          "\n");
   printf(
       "Výběr stylů hry:\n1) Hráč x Hráč\n2) Hráč x AI\n3) Návod\n4) Odejít z "
-      "programu\n");
+      "programu\n\n\nZvolte váš výběr: ");
 }
 
 void goodbye() {
