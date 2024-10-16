@@ -2,6 +2,7 @@
 #include "../include/mylib.h"
 #include <stdio.h>
 #include <unistd.h> // čas
+#include "../include/leaderboard.h"
 
 int main() {
   char choice[] = "";
@@ -23,8 +24,7 @@ int main() {
       sleep(2);
       break;
     case '4':
-      printf("Work in progress\n");
-      sleep(2);
+      reader_lb();
       break;
     case '5':
       goodbye();
