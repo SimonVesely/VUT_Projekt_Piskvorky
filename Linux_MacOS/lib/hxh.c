@@ -1,7 +1,6 @@
 #include "../include/checker.h"
 #include "../include/mylib.h"
 #include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 #define RESET "\033[0m"
 #define RED "\033[31m"
@@ -39,7 +38,7 @@ void humanXhuman() {
            a1, a2, a3, b1, b2, b3, c1, c2, c3);
 
     printf("\n\nHráč č.1: %s |" RED "X" RESET "|    Hráč č.2: %s |" BLUE
-           "O" RESET "|",
+           "O" RESET "|        Q - Ukončení hry / R - Restart hry",
            jmeno1, jmeno2);
     if (aktHrac == 1) {
       printf("\n\nVýběr pole: (Hráč č.%d/%s): ", aktHrac, jmeno1);
@@ -53,6 +52,7 @@ void humanXhuman() {
 
     switch (choice[0]) {
     case 'a':
+    case 'A':
       switch (choice[1]) {
       case '1':
         chooser(a1, &aktHrac);
@@ -64,17 +64,12 @@ void humanXhuman() {
         chooser(a3, &aktHrac);
         break;
       default:
-        printf("Špatný vstup!\n");
-        sleep(1);
-        if (aktHrac == 2) {
-          aktHrac = 1;
-        } else {
-          aktHrac = 2;
-        }
+        def_check(&aktHrac);
         break;
       }
       break;
     case 'b':
+    case 'B':
       switch (choice[1]) {
       case '1':
         chooser(b1, &aktHrac);
@@ -86,17 +81,12 @@ void humanXhuman() {
         chooser(b3, &aktHrac);
         break;
       default:
-        printf("Špatný vstup!\n");
-        sleep(1);
-        if (aktHrac == 2) {
-          aktHrac = 1;
-        } else {
-          aktHrac = 2;
-        }
+        def_check(&aktHrac);
         break;
       }
       break;
     case 'c':
+    case 'C':
       switch (choice[1]) {
       case '1':
         chooser(c1, &aktHrac);
@@ -108,28 +98,19 @@ void humanXhuman() {
         chooser(c3, &aktHrac);
         break;
       default:
-        printf("Špatný vstup!\n");
-        sleep(1);
-        if (aktHrac == 2) {
-          aktHrac = 1;
-        } else {
-          aktHrac = 2;
-        }
+        def_check(&aktHrac);
         break;
       }
       break;
     case 'q':
-      return;
     case 'Q':
       return;
+    case 'r':
+    case 'R':
+      humanXhuman();
+      return;
     default:
-      printf("Špatný vstup!\n");
-      sleep(1);
-      if (aktHrac == 2) {
-        aktHrac = 1;
-      } else {
-        aktHrac = 2;
-      }
+      def_check(&aktHrac);
       break;
     }
     konecHry = checker(konecHry, a1, a2, a3, b1, b2, b3, c1, c2, c3);

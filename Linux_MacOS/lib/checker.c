@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
 
 int checker(int konec, char a1[], char a2[], char a3[], char b1[], char b2[],
             char b3[], char c1[], char c2[], char c3[]) {
@@ -91,5 +91,16 @@ void chooser(char pole[], int *akthrac) {
     return;
   }
 
+  return;
+}
+
+void def_check(int *akthrac) {
+  printf("Špatný vstup!\n");
+  sleep(1);
+  if (*akthrac == 2) {
+    *akthrac = 1;
+  } else {
+    *akthrac = 2;
+  }
   return;
 }
