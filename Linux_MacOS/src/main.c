@@ -5,8 +5,9 @@
 
 int main() {
   char choice[] = "";
-  while (choice[0] != '4') {
+  while (choice[0] != '5') {
     clearScreen();
+    ascii();
     welcome();
     scanf("%s", choice);
     switch (choice[0]) {
@@ -22,6 +23,10 @@ int main() {
       sleep(2);
       break;
     case '4':
+      printf("Work in progress\n");
+      sleep(2);
+      break;
+    case '5':
       goodbye();
       break;
     default:

@@ -14,12 +14,14 @@
 void humanXhuman() {
   clearScreen();
   int rows = 3, cols = 3, pocetTahu = 0, aktHrac = 1, konecHry = 0, remiza = 0;
-  char jmeno1[256], jmeno2[256], choice[256], empty[256];
+  char jmeno1[256], jmeno2[256], choice[256], empty[256], vstup[256];
   char a1[] = "   ", a2[] = "   ", a3[] = "   ", b1[] = "   ", b2[] = "   ",
        b3[] = "   ", c1[] = "   ", c2[] = "   ", c3[] = "   ";
+  ascii();
   printf("Zadej jméno hráč č.1: ");
   scanf("%s", jmeno1);
   clearScreen();
+  ascii();
   printf("Zadej jméno hráč č.2: ");
   scanf("%s", jmeno2);
 
@@ -36,7 +38,9 @@ void humanXhuman() {
            " -----------       |           -------------- \n",
            a1, a2, a3, b1, b2, b3, c1, c2, c3);
 
-    printf("\n\nHráč č.1: %s |"RED"X"RESET"|    Hráč č.2: %s |"BLUE"O"RESET"|", jmeno1, jmeno2);
+    printf("\n\nHráč č.1: %s |" RED "X" RESET "|    Hráč č.2: %s |" BLUE
+           "O" RESET "|",
+           jmeno1, jmeno2);
     if (aktHrac == 1) {
       printf("\n\nVýběr pole: (Hráč č.%d/%s): ", aktHrac, jmeno1);
       scanf("%s", choice);
@@ -51,59 +55,14 @@ void humanXhuman() {
     case 'a':
       switch (choice[1]) {
       case '1':
-        if (a1[1] == 'X' || a1[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(a1, " X ");
-          break;
-        } else {
-          strcpy(a1, " O ");
-          break;
-        }
+        chooser(a1, &aktHrac);
+        break;
       case '2':
-        if (a2[1] == 'X' || a2[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(a2, " X ");
-          break;
-        } else {
-          strcpy(a2, " O ");
-          break;
-        }
+        chooser(a2, &aktHrac);
+        break;
       case '3':
-        if (a3[1] == 'X' || a3[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(a3, " X ");
-          break;
-        } else {
-          strcpy(a3, " O ");
-          break;
-        }
+        chooser(a3, &aktHrac);
+        break;
       default:
         printf("Špatný vstup!\n");
         sleep(1);
@@ -118,59 +77,14 @@ void humanXhuman() {
     case 'b':
       switch (choice[1]) {
       case '1':
-        if (b1[1] == 'X' || b1[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(b1, " X ");
-          break;
-        } else {
-          strcpy(b1, " O ");
-          break;
-        }
+        chooser(b1, &aktHrac);
+        break;
       case '2':
-        if (b2[1] == 'X' || b2[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(b2, " X ");
-          break;
-        } else {
-          strcpy(b2, " O ");
-          break;
-        }
+        chooser(b2, &aktHrac);
+        break;
       case '3':
-        if (b3[1] == 'X' || b3[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(b3, " X ");
-          break;
-        } else {
-          strcpy(b3, " O ");
-          break;
-        }
+        chooser(b3, &aktHrac);
+        break;
       default:
         printf("Špatný vstup!\n");
         sleep(1);
@@ -185,59 +99,14 @@ void humanXhuman() {
     case 'c':
       switch (choice[1]) {
       case '1':
-        if (c1[1] == 'X' || c1[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(c1, " X ");
-          break;
-        } else {
-          strcpy(c1, " O ");
-          break;
-        }
+        chooser(c1, &aktHrac);
+        break;
       case '2':
-        if (c2[1] == 'X' || c2[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(c2, " X ");
-          break;
-        } else {
-          strcpy(c2, " O ");
-          break;
-        }
+        chooser(c2, &aktHrac);
+        break;
       case '3':
-        if (c3[1] == 'X' || c3[1] == 'O') {
-          printf("Toto pole už bylo zvoleno!\n");
-          sleep(1);
-          if (aktHrac == 2) {
-            aktHrac = 1;
-          } else {
-            aktHrac = 2;
-          }
-          break;
-        }
-        if (aktHrac == 2) {
-          strcpy(c3, " X ");
-          break;
-        } else {
-          strcpy(c3, " O ");
-          break;
-        }
+        chooser(c3, &aktHrac);
+        break;
       default:
         printf("Špatný vstup!\n");
         sleep(1);
@@ -268,14 +137,30 @@ void humanXhuman() {
   }
   clearScreen();
   if (remiza == 1) {
-    printf("Nastala remíza, chcete opakovat hru nebo odejít do menu: ");
+    printf("Nastala remíza, chcete opakovat hru(1) nebo odejít do menu(2): ");
+    scanf("%s", vstup);
+    if (vstup[0] == '1') {
+      humanXhuman();
+    }
   } else {
     if (aktHrac == 2) {
-      printf("Gratulujeme, vyhrál hráč č.1, %s\n", jmeno1);
+      printf("Gratulujeme, vyhrál hráč č.1, %s\n\nChcete opakovat hru(1) nebo "
+             "odejít do menu(2): ",
+             jmeno1);
+      scanf("%s", vstup);
+      if (vstup[0] == '1') {
+        humanXhuman();
+      }
+
     } else {
-      printf("Gratulujeme, vyhrál hráč č.2, %s\n", jmeno2);
+      printf("Gratulujeme, vyhrál hráč č.2, %s\n\nChcete opakovat hru(1) nebo "
+             "odejít do menu(2): ",
+             jmeno2);
+      scanf("%s", vstup);
+      if (vstup[0] == '1') {
+        humanXhuman();
+      }
     }
   }
-  scanf("%s", empty);
   return;
 }
