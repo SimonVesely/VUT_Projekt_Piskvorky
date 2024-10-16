@@ -6,6 +6,8 @@
 
 void reader_lb() {
   clearScreen();
+  ascii();
+  printf("SKÓRE:\n\n");
   FILE *data = fopen("../Data/Leaderboard.json", "r");
 
   if (data == NULL) {
@@ -36,7 +38,7 @@ void reader_lb() {
     cJSON *score = cJSON_GetObjectItem(item, "score");
 
     if (cJSON_IsString(name) && cJSON_IsNumber(score)) {
-      printf("Jméno: %s, skóre: %d\n", name->valuestring, score->valueint);
+      printf("%d. %s - %d\n", i + 1, name->valuestring, score->valueint);
     }
   }
 
