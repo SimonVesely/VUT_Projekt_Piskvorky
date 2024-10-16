@@ -1,12 +1,14 @@
-#include <cjson/cJSON.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "../include/mylib.h"
+#include <cjson/cJSON.h> // knihovna pro načítání/zapisování souborů typu JSON
+#include <stdio.h> // knihovna pro načítání vstupů a výstupů
+#include <stdlib.h> // knihovna pro systémové příkazy
+#include <unistd.h> // knihovna pro čas(sleep)
+#include "../include/mylib.h" // knihovna s custom scripty, které by se opakovali v částech kódu
 
 void reader_lb() {
+
   clearScreen();
   ascii();
+
   printf("SKÓRE:\n\n");
   FILE *data = fopen("../Data/Leaderboard.json", "r");
 

@@ -1,5 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h> //systémové příkazy
+#include <stdio.h> // knihovna pro načítání vstupů a výstupů 
+#include <stdlib.h> // knihovna pro systémové příkazy
+
+// nadefinování ANSI znaků pro změnu barev v text
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -8,8 +10,10 @@
 #define MAGENTA "\033[35m"
 #define CYAN "\033[36m"
 
+// funkce pro vyčištění obrazovky(konzolový příkaz 'clear')
 void clearScreen() { system("clear"); }
 
+// funkce pro výpis ASCII artu
 void ascii(){
   printf("┌───────────────────────────────────┐\n"
          "│"RED"▌ ▌"RESET" ▛▀▖▗    ▌           ▌     "BLUE" ▞▀▀▖"RESET"│\n"
@@ -17,10 +21,11 @@ void ascii(){
          "│"RED"▞▝▖"RESET" ▌  ▐ ▝▀▖▛▚ ▐▐ ▌ ▌▌  ▛▚ ▚▄▌"BLUE" ▌  ▌"RESET"│\n"
          "│"RED"▘ ▘"RESET" ▘  ▀▘▀▀ ▘ ▘ ▘ ▝▀ ▘  ▘ ▘▗▄▘"BLUE" ▝▀▀ "RESET"│\n"
          "└───────────────────────────────────┘"
-"\n");
+         "\n");
   return;
 }
 
+// funkce pro zobrazení jednotlivých položek v hlavním menu
 void welcome() {
   /*printf("┌─────────────────────────┐\n"
          "│┏━┓╻┏━┓╻┏ ╻ ╻┏━┓┏━┓╻┏ ╻ ╻│\n"
@@ -33,7 +38,8 @@ void welcome() {
       "programu\n\n\nZvolte váš výběr: ");
 }
 
+// funkce pro ukončení aplikace
 void goodbye() {
   clearScreen();
-  printf("Ďakujem za zahrání gamesky\n");
+  printf("Děkujeme za zahrání hry\n");
 }

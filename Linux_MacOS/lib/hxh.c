@@ -40,6 +40,7 @@ void humanXhuman() {
     printf("\n\nHráč č.1: %s |" RED "X" RESET "|    Hráč č.2: %s |" BLUE
            "O" RESET "|        Q - Ukončení hry / R - Restart hry",
            jmeno1, jmeno2);
+
     if (aktHrac == 1) {
       printf("\n\nVýběr pole: (Hráč č.%d/%s): ", aktHrac, jmeno1);
       scanf("%s", choice);
