@@ -1,6 +1,8 @@
 #include "../include/checker.h"
 #include "../include/mylib.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #define RESET "\033[0m"
 #define RED "\033[31m"
@@ -13,12 +15,8 @@
 void humanXhuman() {
   clearScreen();
   int velikostPole;
-  int rows = 3, cols = 3, pocetTahu = 0, aktHrac = 1, konecHry = 0, remiza = 0;
-  char jmeno1[256], jmeno2[256], choice[256], empty[256], vstup[256];
-
-  // starý systém
-  char a1[] = "   ", a2[] = "   ", a3[] = "   ", b1[] = "   ", b2[] = "   ",
-       b3[] = "   ", c1[] = "   ", c2[] = "   ", c3[] = "   ";
+  int aktHrac = 1, konecHry = 0, remiza = 0;
+  char jmeno1[256], jmeno2[256], choice[256], vstup[256];
 
   ascii();
   printf("Zadej jméno hráč č.1: ");
@@ -32,29 +30,20 @@ void humanXhuman() {
   printf("Vyber si velikost pole (3 - 9): ");
   scanf("%d", &velikostPole);
   char hracipole[9][9];
+  for (int i = 0; i < velikostPole; i++) {
+    for (int j = 0; j < velikostPole; j++) {
+      hracipole[i][j] = '.';
+    }
+  }
 
   while (konecHry == 0) {
     clearScreen();
-    int x = 0, y = 0;
-    /* starý systém
-    printf("Hrací pole:        |           Ukázkové pole:\n"
-           " -----------       |           -------------- \n"
-           "|%s|%s|%s|      |          | A1 | A2 | A3 |\n"
-           "|---|---|---|      |          |----|----|----|\n"
-           "|%s|%s|%s|      |          | B1 | B2 | B3 |\n"
-           "|---|---|---|      |          |----|----|----|\n"
-           "|%s|%s|%s|      |          | C1 | C2 | C3 |\n"
-           " -----------       |           -------------- \n",
-           a1, a2, a3, b1, b2, b3, c1, c2, c3);
-    */
-
-    for (int i = 0; i < velikostPole; i++) {
-      for (int j = 0; j < velikostPole; j++) {
-        hracipole[i][j] = '.'; // Vložení prázdného charakteru do polí
-      }
+    if (aktHrac == 1) {
+      printf(RED "Y\n" RESET);
+    } else {
+      printf(BLUE "Y\n" RESET);
     }
-
-    printf(" ");
+    printf("^\n|   ");
     for (int i = 0; i < velikostPole; i++) {
       printf("---");
     }
@@ -64,6 +53,7 @@ void humanXhuman() {
     printf("\n");
 
     for (int i = 0; i < velikostPole; i++) {
+      printf("%d  ", i + 1);
       for (int j = 0; j < velikostPole; j++) {
         if (j == velikostPole - 1) {
           if (hracipole[i][j] == '.') {
@@ -76,16 +66,16 @@ void humanXhuman() {
 
         } else {
           if (hracipole[i][j] == '.') {
-            printf("| " GREEN "%c" RESET" ", hracipole[i][j]);
+            printf("| " GREEN "%c" RESET " ", hracipole[i][j]);
           } else if (hracipole[i][j] == 'X') {
-            printf("| " RED "%c" RESET" ", hracipole[i][j]);
+            printf("| " RED "%c" RESET " ", hracipole[i][j]);
           } else if (hracipole[i][j] == 'O') {
-            printf("| " BLUE "%c" RESET" ", hracipole[i][j]);
+            printf("| " BLUE "%c" RESET " ", hracipole[i][j]);
           }
         }
       }
       if (i != velikostPole - 1) {
-        printf("|");
+        printf("|  |");
         for (int i = 0; i < velikostPole; i++) {
           printf("---|");
         }
@@ -93,12 +83,25 @@ void humanXhuman() {
       }
     }
 
-    printf(" ");
+    printf("|   ");
     for (int i = 0; i < velikostPole; i++) {
       printf("---");
     }
     for (int i = 0; i < velikostPole - 1; i++) {
       printf("-");
+    }
+    printf("\n*---");
+    for (int i = 0; i < velikostPole; i++) {
+      printf("-%d--", i + 1);
+    }
+    for (int i = 0; i < velikostPole - 1; i++) {
+      printf("-");
+    }
+    printf(">");
+    if (aktHrac == 1) {
+      printf(RED "X\n" RESET);
+    } else {
+      printf(BLUE "X\n" RESET);
     }
 
     printf("\n\nHráč č.1: %s |" RED "X" RESET "|    Hráč č.2: %s |" BLUE
@@ -106,80 +109,71 @@ void humanXhuman() {
            jmeno1, jmeno2);
 
     if (aktHrac == 1) {
-      printf("\n\nVýběr pole: (Hráč č.%d/%s): ", aktHrac, jmeno1);
+      printf("\n\nVýběr pole: (Hráč č.%d/%s) |X;Y|: ", aktHrac, jmeno1);
       scanf("%s", choice);
       aktHrac = 2;
     } else {
-      printf("\n\nVýběr pole: (Hráč č.%d/%s): ", aktHrac, jmeno2);
+      printf("\n\nVýběr pole: (Hráč č.%d/%s) |X;Y|: ", aktHrac, jmeno2);
       scanf("%s", choice);
       aktHrac = 1;
     }
 
-    switch (choice[0]) {
-    case 'a':
-    case 'A':
-      switch (choice[1]) {
-      case '1':
-        chooser(a1, &aktHrac);
-        break;
-      case '2':
-        chooser(a2, &aktHrac);
-        break;
-      case '3':
-        chooser(a3, &aktHrac);
-        break;
-      default:
-        def_check(&aktHrac);
-        break;
+    if (strlen(choice) == 2) {
+      int row = choice[0] - '1'; // Convert character to 0-based index
+      int col = choice[1] - '1'; // Convert character to 0-based index
+
+      if (row >= velikostPole || col >= velikostPole || row < 0 || col < 0) {
+        printf("Špatný vstup !!!\n");
+        sleep(1);
+        if (aktHrac == 1) {
+          aktHrac = 2;
+        } else {
+          aktHrac = 1;
+        }
+      } else {
+        if (hracipole[row][col] == 'X' || hracipole[row][col] == 'O') {
+          printf("Pole je již obsazeno! Zkuste jiné místo.\n");
+          sleep(1);
+          if (aktHrac == 1) {
+            aktHrac = 2;
+          } else {
+            aktHrac = 1;
+          }
+          sleep(2);
+        } else {
+          if (aktHrac == 2) {
+            hracipole[row][col] = 'X'; // Assign 'X' for player 2
+          } else {
+            hracipole[row][col] = 'O'; // Assign 'O' for player 1
+          }
+        }
       }
-      break;
-    case 'b':
-    case 'B':
-      switch (choice[1]) {
-      case '1':
-        chooser(b1, &aktHrac);
-        break;
-      case '2':
-        chooser(b2, &aktHrac);
-        break;
-      case '3':
-        chooser(b3, &aktHrac);
-        break;
-      default:
-        def_check(&aktHrac);
-        break;
+    } else {
+      printf("Špatný vstup !!!\n");
+      if (aktHrac == 1) {
+        aktHrac = 2;
+      } else {
+        aktHrac = 1;
       }
-      break;
-    case 'c':
-    case 'C':
-      switch (choice[1]) {
-      case '1':
-        chooser(c1, &aktHrac);
-        break;
-      case '2':
-        chooser(c2, &aktHrac);
-        break;
-      case '3':
-        chooser(c3, &aktHrac);
-        break;
-      default:
-        def_check(&aktHrac);
-        break;
-      }
-      break;
-    case 'q':
-    case 'Q':
-      return;
-    case 'r':
-    case 'R':
-      humanXhuman();
-      return;
-    default:
-      def_check(&aktHrac);
-      break;
     }
-    konecHry = checker(konecHry, a1, a2, a3, b1, b2, b3, c1, c2, c3);
-    remiza = draw(a1, a2, a3, b1, b2, b3, c1, c2, c3);
+
+    if (checker(hracipole, velikostPole, 'X') == 1) {
+      konecHry++;
+    } else if (checker(hracipole, velikostPole, 'O') == 1) {
+      konecHry++;
+    }
+    int rem_check = 0;
+    for (int i = 0; i < velikostPole; i++) {
+      for (int j = 0; j < velikostPole; j++) {
+        if (hracipole[i][j] == '.') {
+          rem_check++;
+        }
+      }
+    }
+    if (rem_check == velikostPole*velikostPole) {
+      remiza++;
+      konecHry++;
+    }
   }
   clearScreen();
   if (remiza == 1) {
@@ -190,16 +184,15 @@ void humanXhuman() {
     }
   } else {
     if (aktHrac == 2) {
-      printf("Gratulujeme, vyhrál hráč č.1, %s\n\nChcete opakovat hru(1) nebo "
+      printf("Gratulujeme, vyhrál hráč č.1, %s\n\nChcete opakovat hru(1) nebo"
              "odejít do menu(2): ",
              jmeno1);
       scanf("%s", vstup);
       if (vstup[0] == '1') {
         humanXhuman();
       }
-
     } else {
-      printf("Gratulujeme, vyhrál hráč č.2, %s\n\nChcete opakovat hru(1) nebo "
+      printf("Gratulujeme, vyhrál hráč č.2, %s\n\nChcete opakovat hru(1) nebo"
              "odejít do menu(2): ",
              jmeno2);
       scanf("%s", vstup);

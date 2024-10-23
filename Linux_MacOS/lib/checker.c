@@ -2,105 +2,50 @@
 #include <string.h>
 #include <unistd.h>
 
-int checker(int konec, char a1[], char a2[], char a3[], char b1[], char b2[],
-            char b3[], char c1[], char c2[], char c3[]) {
-  if (a1[1] == 'X' && a2[1] == 'X' && a3[1] == 'X') {
-    return 1;
-  }
-  if (b1[1] == 'X' && b2[1] == 'X' && b3[1] == 'X') {
-    return 1;
-  }
-  if (c1[1] == 'X' && c2[1] == 'X' && c3[1] == 'X') {
-    return 1;
-  }
-  if (a1[1] == 'X' && b1[1] == 'X' && c1[1] == 'X') {
-    return 1;
-  }
-  if (a2[1] == 'X' && b2[1] == 'X' && c2[1] == 'X') {
-    return 1;
-  }
-  if (a3[1] == 'X' && b3[1] == 'X' && c3[1] == 'X') {
-    return 1;
-  }
-  if (a1[1] == 'X' && b2[1] == 'X' && c3[1] == 'X') {
-    return 1;
-  }
-  if (a3[1] == 'X' && b2[1] == 'X' && c1[1] == 'X') {
-    return 1;
-  }
-
-  if (a1[1] == 'O' && a2[1] == 'O' && a3[1] == 'O') {
-    return 1;
-  }
-  if (b1[1] == 'O' && b2[1] == 'O' && b3[1] == 'O') {
-    return 1;
-  }
-  if (c1[1] == 'O' && c2[1] == 'O' && c3[1] == 'O') {
-    return 1;
-  }
-  if (a1[1] == 'O' && b1[1] == 'O' && c1[1] == 'O') {
-    return 1;
-  }
-  if (a2[1] == 'O' && b2[1] == 'O' && c2[1] == 'O') {
-    return 1;
-  }
-  if (a3[1] == 'O' && b3[1] == 'O' && c3[1] == 'O') {
-    return 1;
-  }
-  if (a1[1] == 'O' && b2[1] == 'O' && c3[1] == 'O') {
-    return 1;
-  }
-  if (a3[1] == 'O' && b2[1] == 'O' && c1[1] == 'O') {
-    return 1;
-  }
-  if (a1[1] != ' ' && a2[1] != ' ' && a3[1] != ' ' && b1[1] != ' ' &&
-      b2[1] != ' ' && b3[1] != ' ' && c1[1] != ' ' && c2[1] != ' ' &&
-      c3[1] != ' ') {
-    return 1;
-  }
-
-  return 0;
-}
-
-int draw(char a1[], char a2[], char a3[], char b1[], char b2[], char b3[],
-         char c1[], char c2[], char c3[]) {
-  if (a1[1] != ' ' && a2[1] != ' ' && a3[1] != ' ' && b1[1] != ' ' &&
-      b2[1] != ' ' && b3[1] != ' ' && c1[1] != ' ' && c2[1] != ' ' &&
-      c3[1] != ' ') {
-    return 1;
-  }
-  return 0;
-}
-
-void chooser(char pole[], int *akthrac) {
-  if (pole[1] == 'X' || pole[1] == 'O') {
-    printf("Toto pole už bylo zvoleno!\n");
-    sleep(1);
-    if (*akthrac == 2) {
-      *akthrac = 1;
-    } else {
-      *akthrac = 2;
+int checker(char hracipole[9][9], int velikostPole, char symbol) {
+  for (int row = 0; row < velikostPole; row++) {
+        for (int col = 0; col <= velikostPole - 3; col++) {
+            if (hracipole[row][col] == symbol && 
+                hracipole[row][col + 1] == symbol && 
+                hracipole[row][col + 2] == symbol) {
+                return 1; // Found a match
+            }
+        }
     }
-    return;
-  }
-  if (*akthrac == 2) {
-    strcpy(pole, " X ");
-    return;
-  } else {
-    strcpy(pole, " O ");
-    return;
-  }
 
-  return;
-}
+    // Vertical check
+    for (int col = 0; col < velikostPole; col++) {
+        for (int row = 0; row <= velikostPole - 3; row++) {
+            if (hracipole[row][col] == symbol && 
+                hracipole[row + 1][col] == symbol && 
+                hracipole[row + 2][col] == symbol) {
+                return 1; // Found a match
+            }
+        }
+    }
 
-void def_check(int *akthrac) {
-  printf("Špatný vstup!\n");
-  sleep(1);
-  if (*akthrac == 2) {
-    *akthrac = 1;
-  } else {
-    *akthrac = 2;
-  }
-  return;
+    // Diagonal check (top-left to bottom-right)
+    for (int row = 0; row <= velikostPole - 3; row++) {
+        for (int col = 0; col <= velikostPole - 3; col++) {
+            if (hracipole[row][col] == symbol && 
+                hracipole[row + 1][col + 1] == symbol && 
+                hracipole[row + 2][col + 2] == symbol) {
+                return 1; // Found a match
+            }
+        }
+    }
+
+    // Diagonal check (top-right to bottom-left)
+    for (int row = 0; row <= velikostPole - 3; row++) {
+        for (int col = 2; col < velikostPole; col++) {
+            if (hracipole[row][col] == symbol && 
+                hracipole[row + 1][col - 1] == symbol && 
+                hracipole[row + 2][col - 2] == symbol) {
+                return 1; // Found a match
+            }
+        }
+    }
+
+    // No winner found
+    return 0;
 }

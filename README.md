@@ -29,7 +29,7 @@ Na Windows otevřeme project ve IDE Visual Studio 2022 a spustíme, jedná se o 
    
 Pro Linux/MacOS lze samostatně kompilovat main.c, a poté jej spustit v terminálu
 ```
-gcc -Iinclude -Llib/cjson -lcjson src/main.c lib/mylib.c lib/hxh.c lib/checker.c lib/leaderboard.c -o bin/main
+gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c lib/checker.c lib/leaderboard.c lib/cJSON.c -o bin/main
 ./bin/main
 ```
 <br>
