@@ -12,10 +12,14 @@
 
 void humanXhuman() {
   clearScreen();
+  int velikostPole;
   int rows = 3, cols = 3, pocetTahu = 0, aktHrac = 1, konecHry = 0, remiza = 0;
   char jmeno1[256], jmeno2[256], choice[256], empty[256], vstup[256];
+
+  // starý systém
   char a1[] = "   ", a2[] = "   ", a3[] = "   ", b1[] = "   ", b2[] = "   ",
        b3[] = "   ", c1[] = "   ", c2[] = "   ", c3[] = "   ";
+
   ascii();
   printf("Zadej jméno hráč č.1: ");
   scanf("%s", jmeno1);
@@ -23,10 +27,16 @@ void humanXhuman() {
   ascii();
   printf("Zadej jméno hráč č.2: ");
   scanf("%s", jmeno2);
+  clearScreen();
+  ascii();
+  printf("Vyber si velikost pole (3 - 9): ");
+  scanf("%d", &velikostPole);
+  char hracipole[9][9];
 
   while (konecHry == 0) {
     clearScreen();
     int x = 0, y = 0;
+    /* starý systém
     printf("Hrací pole:        |           Ukázkové pole:\n"
            " -----------       |           -------------- \n"
            "|%s|%s|%s|      |          | A1 | A2 | A3 |\n"
@@ -36,6 +46,60 @@ void humanXhuman() {
            "|%s|%s|%s|      |          | C1 | C2 | C3 |\n"
            " -----------       |           -------------- \n",
            a1, a2, a3, b1, b2, b3, c1, c2, c3);
+    */
+
+    for (int i = 0; i < velikostPole; i++) {
+      for (int j = 0; j < velikostPole; j++) {
+        hracipole[i][j] = '.'; // Vložení prázdného charakteru do polí
+      }
+    }
+
+    printf(" ");
+    for (int i = 0; i < velikostPole; i++) {
+      printf("---");
+    }
+    for (int i = 0; i < velikostPole - 1; i++) {
+      printf("-");
+    }
+    printf("\n");
+
+    for (int i = 0; i < velikostPole; i++) {
+      for (int j = 0; j < velikostPole; j++) {
+        if (j == velikostPole - 1) {
+          if (hracipole[i][j] == '.') {
+            printf("| " GREEN "%c" RESET " |\n", hracipole[i][j]);
+          } else if (hracipole[i][j] == 'X') {
+            printf("| " RED "%c" RESET " |\n", hracipole[i][j]);
+          } else if (hracipole[i][j] == 'O') {
+            printf("| " BLUE "%c" RESET " |\n", hracipole[i][j]);
+          }
+
+        } else {
+          if (hracipole[i][j] == '.') {
+            printf("| " GREEN "%c" RESET" ", hracipole[i][j]);
+          } else if (hracipole[i][j] == 'X') {
+            printf("| " RED "%c" RESET" ", hracipole[i][j]);
+          } else if (hracipole[i][j] == 'O') {
+            printf("| " BLUE "%c" RESET" ", hracipole[i][j]);
+          }
+        }
+      }
+      if (i != velikostPole - 1) {
+        printf("|");
+        for (int i = 0; i < velikostPole; i++) {
+          printf("---|");
+        }
+        printf("\n");
+      }
+    }
+
+    printf(" ");
+    for (int i = 0; i < velikostPole; i++) {
+      printf("---");
+    }
+    for (int i = 0; i < velikostPole - 1; i++) {
+      printf("-");
+    }
 
     printf("\n\nHráč č.1: %s |" RED "X" RESET "|    Hráč č.2: %s |" BLUE
            "O" RESET "|        Q - Ukončení hry / R - Restart hry",
