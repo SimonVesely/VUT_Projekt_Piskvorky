@@ -1,8 +1,8 @@
-#include "../include/mylib.h" // knihovna s custom scripty, které by se opakovali v částech kódu
 #include "../include/cJSON.h" // knihovna pro načítání/zapisování souborů typu JSON
-#include <stdio.h>       // knihovna pro načítání vstupů a výstupů
-#include <stdlib.h>      // knihovna pro systémové příkazy
-#include <unistd.h>      // knihovna pro čas(sleep)
+#include "../include/mylib.h" // knihovna s custom scripty, které by se opakovali v částech kódu
+#include <stdio.h>  // knihovna pro načítání vstupů a výstupů
+#include <stdlib.h> // knihovna pro systémové příkazy
+#include <unistd.h> // knihovna pro čas(sleep)
 
 int compare_scores(const void *a, const void *b) {
   cJSON *itemA = *(cJSON **)a;
@@ -44,7 +44,7 @@ void reader_lb() {
   buffer[fileSize] = '\0';
 
   cJSON *json = cJSON_Parse(buffer);
-  //free(buffer);
+  free(buffer);
 
   if (json == NULL) {
     const char *error_ptr = cJSON_GetErrorPtr();
@@ -56,12 +56,15 @@ void reader_lb() {
     return;
   }
 
-  // Proceed with processing the JSON object
-  // Proceed with processing the JSON object
   int array_size = cJSON_GetArraySize(json);
 
-  // Vytvoření pointerů pro seřazení pole
   cJSON **items = malloc(array_size * sizeof(cJSON *));
+  if (items == NULL) {
+    printf("Memory allocation failed\n");
+    cJSON_Delete(json);
+    return;
+  }
+
   for (int i = 0; i < array_size; i++) {
     items[i] = cJSON_GetArrayItem(json, i);
   }
@@ -69,16 +72,13 @@ void reader_lb() {
   qsort(items, array_size, sizeof(cJSON *), compare_scores);
 
   for (int i = 0; i < array_size; i++) {
-    cJSON *item = cJSON_GetArrayItem(json, i);
-
-    cJSON *name = cJSON_GetObjectItem(item, "name");
-    cJSON *score = cJSON_GetObjectItem(item, "score");
+    cJSON *name = cJSON_GetObjectItem(items[i], "name");
+    cJSON *score = cJSON_GetObjectItem(items[i], "score");
 
     if (cJSON_IsString(name) && cJSON_IsNumber(score)) {
       printf("%d. %s - %d\n", i + 1, name->valuestring, score->valueint);
     }
   }
-
   sleep(5);
 
   cJSON_Delete(json);
