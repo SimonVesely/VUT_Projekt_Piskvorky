@@ -1,5 +1,6 @@
 #include "../include/checker.h"
 #include "../include/mylib.h"
+#include "../include/leaderboard.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,10 +8,7 @@
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
-#define YELLOW "\033[33m"
 #define BLUE "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN "\033[36m"
 
 void humanXhuman() {
   clearScreen();
@@ -21,6 +19,7 @@ void humanXhuman() {
   ascii();
   printf("Zadej jméno hráč č.1: ");
   scanf("%s", jmeno1);
+  printf("%d",checker_lb(jmeno1));
   clearScreen();
   ascii();
   printf("Zadej jméno hráč č.2: ");
