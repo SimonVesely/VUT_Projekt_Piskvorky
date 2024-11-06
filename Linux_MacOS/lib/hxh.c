@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -19,7 +20,6 @@ void humanXhuman() {
   ascii();
   printf("Zadej jméno hráč č.1: ");
   scanf("%s", jmeno1);
-  printf("%d",checker_lb(jmeno1));
   clearScreen();
   ascii();
   printf("Zadej jméno hráč č.2: ");
@@ -174,6 +174,7 @@ void humanXhuman() {
       konecHry++;
     }
   }
+
   clearScreen();
   if (remiza == 1) {
     printf("Nastala remíza, chcete opakovat hru(1) nebo odejít do menu(2): ");
@@ -183,6 +184,11 @@ void humanXhuman() {
     }
   } else {
     if (aktHrac == 2) {
+      if (checker_lb(jmeno1) == 1){
+        printf("Připsaní skóre do databaze");
+      } else {
+        printf("Zápis do databáze");
+      }
       printf("Gratulujeme, vyhrál hráč č.1, %s\n\nChcete opakovat hru(1) nebo"
              "odejít do menu(2): ",
              jmeno1);
@@ -191,6 +197,11 @@ void humanXhuman() {
         humanXhuman();
       }
     } else {
+      if (checker_lb(jmeno1) == 1){
+        printf("Připsaní skóre do databaze");
+      } else {
+        printf("Zápis do databáze");
+      }
       printf("Gratulujeme, vyhrál hráč č.2, %s\n\nChcete opakovat hru(1) nebo"
              "odejít do menu(2): ",
              jmeno2);
