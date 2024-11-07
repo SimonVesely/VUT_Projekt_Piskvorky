@@ -185,9 +185,9 @@ void humanXhuman() {
   } else {
     if (aktHrac == 2) {
       if (checker_lb(jmeno1) == 1){
-        printf("Připsaní skóre do databaze");
+        overwriter_lb(jmeno1);
       } else {
-        printf("Zápis do databáze");
+        writer_lb(jmeno1);
       }
       printf("Gratulujeme, vyhrál hráč č.1, %s\n\nChcete opakovat hru(1) nebo"
              "odejít do menu(2): ",
@@ -197,10 +197,10 @@ void humanXhuman() {
         humanXhuman();
       }
     } else {
-      if (checker_lb(jmeno1) == 1){
-        printf("Připsaní skóre do databaze");
+      if (checker_lb(jmeno2) == 1){
+        overwriter_lb(jmeno2);
       } else {
-        printf("Zápis do databáze");
+        writer_lb(jmeno2);
       }
       printf("Gratulujeme, vyhrál hráč č.2, %s\n\nChcete opakovat hru(1) nebo"
              "odejít do menu(2): ",

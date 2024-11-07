@@ -2,8 +2,8 @@
 #define LEADERBOARD_H
 
 void reader_lb();
-void writer_lb();
-void overwriter_lb();
+void writer_lb(char *name);
+void overwriter_lb(char *name);
 void update_lb(char jmeno[256]);
 int checker_lb(char jmeno[256]);
 
