@@ -168,7 +168,6 @@ void overwriter_lb(char *name) {
   }
 
   // Search for the name in the JSON array
-  int name_found = 0;
   int array_size = cJSON_GetArraySize(json);
 
   for (int i = 0; i < array_size; i++) {
@@ -181,7 +180,6 @@ void overwriter_lb(char *name) {
       // Name found, increment the score
       if (cJSON_IsNumber(score_item)) {
         cJSON_SetNumberValue(score_item, score_item->valueint + 1);
-        name_found = 1;
         break;
       }
     }
