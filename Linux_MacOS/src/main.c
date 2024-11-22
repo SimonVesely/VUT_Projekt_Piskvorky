@@ -26,8 +26,7 @@ int main() {
       break;
 
     case '3':
-      printf("Work in progress\n");
-      sleep(2);
+      navod();
       break;
 
     case '4':
