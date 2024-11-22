@@ -6,7 +6,8 @@
 1. **Grafické rozhraní hry:**
 <img src="images/hlavni_menu.png" alt="Hlavní menu" width="600" height="350">
 (vlozit jeste hlavni obrazovku hry, s těma políčkama)
-<br>
+<br>- Jedná se o TUI aplikaci
+<br><br><br>
 
 **Struktura projektu:**
 
@@ -40,7 +41,7 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c lib/checker.c lib/leaderboard.c l
 2. K dispozici jsou 2 herní režimy: Hráč proti hráči
                                     Hráč proti AI
 
-3. Také je zde možnost návodu, kde se nachází kompletní informace o hře Piškvorky
+3. Zobrazení návodu
 
 4. Jako čtvrtá možnost je zde vypnutí hry
 <br>
@@ -55,9 +56,9 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c lib/checker.c lib/leaderboard.c l
 <br>
 
 2. Jako druhý styl hry je zde Hráč proti AI
-   ...
-   ...
-   ...
+   <br>...
+   <br>Zatím není hotový 💀
+   <br>...
 <br>
 
 3. Návod
@@ -65,8 +66,11 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c lib/checker.c lib/leaderboard.c l
    (Zde bude ctrlC ctrlV z té samotne appky)
 <br>
 
-4. Vypnutí hry
-   
+4. Vypsání nejlepších hráčů
 
-   Hra se po zvolení této možnosti vypne pomocí funkce: goodbye
+   Hráči se zobrazí žebříček nejlepších hráčů, skóre udává počet celkových výher hráče<br> - Databáze hráčů je uložená ve složce /Data jako .json soubor
+5. Ukončení aplikace
+   Hra se po zvolení této možnosti vypne
+
+
 
