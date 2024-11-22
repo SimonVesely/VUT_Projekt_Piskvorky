@@ -6,6 +6,7 @@
 #define RED "\033[31m"
 #define GREEN "\033[32m"
 #define BLUE "\033[34m"
+#define YELLOW  "\x1b[33m"
 
 // funkce pro vyčištění obrazovky(konzolový příkaz 'clear')
 void clearScreen() { system("clear"); }
@@ -39,4 +40,32 @@ void welcome() {
 void goodbye() {
   clearScreen();
   printf("Děkujeme za zahrání hry\n");
+}
+
+// funkce pro vypsání návodu
+void navod(){
+  char input[256];
+  while (input[0] != 'q' && input[0] != 'Q'){
+    printf("NÁVOD:\n\n\nHrací pole:\n"
+      "        Y\n"
+      "        ^\n"
+      "        |   ---------------\n"
+      "        1  |"RED" X "RESET"| . |"YELLOW" O "RESET"| . |\n"
+      "        |  |---|---|---|---|\n"
+      "        2  | . |"RED" X "RESET"| O | . |\n"
+      "        |  |---|---|---|---|\n"
+      "        3  | . | . |"RED" X "RESET"| . |\n"
+      "        |  |---|---|---|---|\n"
+      "        4  | . | . | . | . |\n"
+      "        |   ---------------\n"
+      "        *----1---2---3---4----->X\n\n"GREEN
+      "1."RESET" Hráč si vybírá pole podle os, nejprve osu Y, poté osu X\n"
+      "                                      např. pro vyznačené "YELLOW"O"RESET" žlutě: 13 - (Hodnota YX)\n\n"GREEN
+      "2."RESET" Hráč vyhrává pokud se mu podaří spojit 3 body, buď horizontálně, vertikálně nebo diagonálně\n"
+      "                                      např. pro vyznačené červené body "RED"X"RESET"\n\n"GREEN
+      "3."RESET" Pokud nikdo nevyhraje, můžete zvolit restart hry nebo odchod do hlavního menu\n\n\n"
+      "Q = Zpět do hlavního menu\n");
+    scanf("%s", input);
+  }
+  return ;
 }
