@@ -46,6 +46,7 @@ void goodbye() {
 void navod(){
   char input[256];
   while (input[0] != 'q' && input[0] != 'Q'){
+    clearScreen();
     printf("NÁVOD:\n\n\nHrací pole:\n"
       "        Y\n"
       "        ^\n"
