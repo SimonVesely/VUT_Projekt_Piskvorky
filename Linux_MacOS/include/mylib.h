@@ -5,5 +5,6 @@ void clearScreen();
 void ascii();
 void welcome();
 void goodbye();
+void navod();
 
 #endif
