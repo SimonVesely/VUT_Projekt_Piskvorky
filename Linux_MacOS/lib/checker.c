@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 int checker(char hracipole[9][9], int velikostPole, char symbol) {
-  if (velikostPole == 3) {
+  if (velikostPole <= 4) {
     for (int row = 0; row < velikostPole; row++) {
       for (int col = 0; col <= velikostPole - 3; col++) {
         if (hracipole[row][col] == symbol &&
@@ -20,29 +20,28 @@ int checker(char hracipole[9][9], int velikostPole, char symbol) {
         if (hracipole[row][col] == symbol &&
             hracipole[row + 1][col] == symbol &&
             hracipole[row + 2][col] == symbol) {
-          return 1; // Found a match
+          return 1; 
         }
       }
     }
 
-    // Diagonal check (top-left to bottom-right)
+    // Diagonal check
     for (int row = 0; row <= velikostPole - 3; row++) {
       for (int col = 0; col <= velikostPole - 3; col++) {
         if (hracipole[row][col] == symbol &&
             hracipole[row + 1][col + 1] == symbol &&
             hracipole[row + 2][col + 2] == symbol) {
-          return 1; // Found a match
+          return 1;
         }
       }
     }
 
-    // Diagonal check (top-right to bottom-left)
     for (int row = 0; row <= velikostPole - 3; row++) {
       for (int col = 2; col < velikostPole; col++) {
         if (hracipole[row][col] == symbol &&
             hracipole[row + 1][col - 1] == symbol &&
             hracipole[row + 2][col - 2] == symbol) {
-          return 1; // Found a match
+          return 1; 
         }
       }
     }
@@ -65,30 +64,30 @@ int checker(char hracipole[9][9], int velikostPole, char symbol) {
             hracipole[row + 1][col] == symbol &&
             hracipole[row + 2][col] == symbol &&
             hracipole[row + 3][col] == symbol) {
-          return 1; // Found a match
+          return 1; 
         }
       }
     }
 
-    // Diagonal check (top-left to bottom-right)
+    // Diagonal check 
     for (int row = 0; row <= velikostPole - 4; row++) {
       for (int col = 0; col <= velikostPole - 4; col++) {
         if (hracipole[row][col] == symbol &&
             hracipole[row + 1][col + 1] == symbol &&
             hracipole[row + 2][col + 2] == symbol &&
             hracipole[row + 3][col + 3] == symbol) {
-          return 1; // Found a match
+          return 1; 
         }
       }
     }
 
-    // Diagonal check (top-right to bottom-left)
+    // Diagonal check 
     for (int row = 0; row <= velikostPole - 3; row++) {
       for (int col = 2; col < velikostPole; col++) {
         if (hracipole[row][col] == symbol &&
             hracipole[row + 1][col - 1] == symbol &&
             hracipole[row + 2][col - 2] == symbol) {
-          return 1; // Found a match
+          return 1; 
         }
       }
     }
