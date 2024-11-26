@@ -1,0 +1,5 @@
+D:/VeSi/piskvorky/piskvorky/out/build/x64-debug/CMakeFiles/edit_cache.dir
+D:/VeSi/piskvorky/piskvorky/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
+D:/VeSi/piskvorky/piskvorky/out/build/x64-debug/piskvorky/CMakeFiles/piskvorky.dir
+D:/VeSi/piskvorky/piskvorky/out/build/x64-debug/piskvorky/CMakeFiles/edit_cache.dir
+D:/VeSi/piskvorky/piskvorky/out/build/x64-debug/piskvorky/CMakeFiles/rebuild_cache.dir
