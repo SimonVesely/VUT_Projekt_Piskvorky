@@ -1,6 +1,6 @@
 #include "../include/checker.h"
-#include "../include/mylib.h"
 #include "../include/leaderboard.h"
+#include "../include/mylib.h"
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -10,19 +10,16 @@
 #define GREEN "\033[32m"
 #define BLUE "\033[34m"
 
-void humanXhuman() {
+void humanXai() {
   clearScreen();
+  printf("Still in working :(\n\n");
   int velikostPole;
   int aktHrac = 1, konecHry = 0, remiza = 0;
-  char jmeno1[256], jmeno2[256], choice[256], vstup[256];
+  char jmeno1[256], choice[256], vstup[256];
 
   ascii();
   printf("Zadej jméno hráč č.1: ");
   scanf("%s", jmeno1);
-  clearScreen();
-  ascii();
-  printf("Zadej jméno hráč č.2: ");
-  scanf("%s", jmeno2);
   clearScreen();
   ascii();
   printf("Vyber si velikost pole (3 - 9): ");
@@ -102,23 +99,23 @@ void humanXhuman() {
       printf(BLUE "X\n" RESET);
     }
 
-    printf("\n\nHráč č.1: %s |" RED "X" RESET "|    Hráč č.2: %s |" BLUE
-           "O" RESET "|        Q - Ukončení hry / R - Restart hry",
-           jmeno1, jmeno2);
+    printf("\n\nHráč č.1: %s |" RED "X" RESET "|    Hráč AI: |" BLUE "O" RESET
+           "|        Q - Ukončení hry / R - Restart hry",
+           jmeno1);
 
     if (aktHrac == 1) {
       printf("\n\nVýběr pole: (Hráč č.%d/%s) |X;Y|: ", aktHrac, jmeno1);
       scanf("%s", choice);
       aktHrac = 2;
     } else {
-      printf("\n\nVýběr pole: (Hráč č.%d/%s) |X;Y|: ", aktHrac, jmeno2);
-      scanf("%s", choice);
+      printf("\n\nVýběr pole: (Hráč č.%d/AI) |X;Y|:\n", aktHrac);
+      aichooser(hracipole, velikostPole, choice);
       aktHrac = 1;
     }
 
     if (strlen(choice) == 2) {
-      int row = choice[0] - '1'; // Convert character to 0-based index
-      int col = choice[1] - '1'; // Convert character to 0-based index
+      int row = choice[0] - '1';
+      int col = choice[1] - '1';
 
       if (row >= velikostPole || col >= velikostPole || row < 0 || col < 0) {
         printf("Špatný vstup !!!\n");
@@ -130,7 +127,7 @@ void humanXhuman() {
         }
       } else {
         if (hracipole[row][col] == 'X' || hracipole[row][col] == 'O') {
-          printf("Pole je již obsazeno! Zkuste jiné místo.\n");
+          printf("\nPole je již obsazeno! Zkuste jiné místo.\n");
           sleep(1);
           if (aktHrac == 1) {
             aktHrac = 2;
@@ -140,9 +137,9 @@ void humanXhuman() {
           sleep(2);
         } else {
           if (aktHrac == 2) {
-            hracipole[row][col] = 'X'; // Assign 'X' for player 2
+            hracipole[row][col] = 'X';
           } else {
-            hracipole[row][col] = 'O'; // Assign 'O' for player 1
+            hracipole[row][col] = 'O';
           }
         }
       }
@@ -168,7 +165,7 @@ void humanXhuman() {
         }
       }
     }
-    if (rem_check == velikostPole*velikostPole) {
+    if (rem_check == velikostPole * velikostPole) {
       remiza++;
       konecHry++;
     }
@@ -179,11 +176,11 @@ void humanXhuman() {
     printf("Nastala remíza, chcete opakovat hru(1) nebo odejít do menu(2): ");
     scanf("%s", vstup);
     if (vstup[0] == '1') {
-      humanXhuman();
+      humanXai();
     }
   } else {
     if (aktHrac == 2) {
-      if (checker_lb(jmeno1) == 1){
+      if (checker_lb(jmeno1) == 1) {
         overwriter_lb(jmeno1);
       } else {
         writer_lb(jmeno1);
@@ -193,20 +190,14 @@ void humanXhuman() {
              jmeno1);
       scanf("%s", vstup);
       if (vstup[0] == '1') {
-        humanXhuman();
+        humanXai();
       }
     } else {
-      if (checker_lb(jmeno2) == 1){
-        overwriter_lb(jmeno2);
-      } else {
-        writer_lb(jmeno2);
-      }
-      printf("Gratulujeme, vyhrál hráč č.2, %s\n\nChcete opakovat hru(1) nebo"
-             " odejít do menu(2): ",
-             jmeno2);
+      printf("Gratulujeme, vyhrálo AI\n\nChcete opakovat hru(1) nebo"
+             " odejít do menu(2): ");
       scanf("%s", vstup);
       if (vstup[0] == '1') {
-        humanXhuman();
+        humanXai();
       }
     }
   }

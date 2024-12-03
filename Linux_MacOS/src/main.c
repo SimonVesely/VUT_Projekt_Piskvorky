@@ -1,4 +1,5 @@
 #include "../include/hxh.h" // knihovna pro mod hráč x hráč
+#include "../include/hxai.h" // knihovna pro mod hráč x ai
 #include "../include/mylib.h" // knihovna s custom scripty, které by se opakovali v částech kódu
 #include "../include/leaderboard.h" // knihovna vypisující data do leaderboardu
 #include <stdio.h> // knihovna pro načítání vstupů a výstupů
@@ -21,8 +22,7 @@ int main() {
       break;
 
     case '2':
-      printf("Work in progress\n");
-      sleep(2);
+      humanXai();
       break;
 
     case '3':
