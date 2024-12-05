@@ -1,4 +1,5 @@
 # VUT PROJEKT - PIŠKVORKY V C
+<br>Projekt za 20/20 bodů, let's gooooo
 ## AUTOŘI:
 **Simon Veselý** - 271017<br>
 **Vojtěch Šafář** - 270292
