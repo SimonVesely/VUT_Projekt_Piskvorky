@@ -38,7 +38,7 @@ int main() {
       break;
 
     default:
-      printf("Špatně vložený input\n");
+      printf("Špatný vstup!\n");
       sleep(2);
     }
   }

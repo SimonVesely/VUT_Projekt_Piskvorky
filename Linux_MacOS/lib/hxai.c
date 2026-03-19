@@ -12,7 +12,7 @@
 
 void humanXai() {
   clearScreen();
-  printf("Still in working :(\n\n");
+  printf("BetaVersion\n\n");
   int velikostPole;
   int aktHrac = 1, konecHry = 0, remiza = 0;
   char jmeno1[256], choice[256], vstup[256];
