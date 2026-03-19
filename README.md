@@ -1,5 +1,5 @@
 # VUT PROJEKT - PIŠKVORKY V C
-<br>Projekt za 20/20 bodů, let's gooooo
+<br>Hodnocení projektu:  20/20
 ## AUTOŘI:
 **Simon Veselý** - 271017<br>
 **Vojtěch Šafář** - 270292
@@ -12,11 +12,7 @@
 
 **Struktura projektu:**
 
-1. Windows
-....<br>
-
-
-3. Linux/MacOS
+1. Linux/MacOS
 <img src="images/struktura_linux:macos.png" alt="struktura-Linux/MacOS" width="200" height="300">
 
 <br>
@@ -57,14 +53,6 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c lib/checker.c lib/leaderboard.c l
 <br>
 
 2. Jako druhý styl hry je zde Hráč proti AI
-   <br>...
-   <br>Zatím není hotový 💀
-   <br>...
-<br>
-
-3. Návod
-
-   (Zde bude ctrlC ctrlV z té samotne appky)
 <br>
 
 4. Vypsání nejlepších hráčů
