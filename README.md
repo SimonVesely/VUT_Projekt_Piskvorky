@@ -1,5 +1,5 @@
 # VUT PROJEKT - PIŠKVORKY V C
-<br>Hodnocení projektu:  20/20
+Hodnocení projektu:  20/20
 ## AUTOŘI:
 **Simon Veselý** - 271017<br>
 **Vojtěch Šafář** - 270292
@@ -55,10 +55,10 @@ gcc -Iinclude src/main.c lib/mylib.c lib/hxh.c lib/checker.c lib/leaderboard.c l
 2. Jako druhý styl hry je zde Hráč proti AI
 <br>
 
-4. Vypsání nejlepších hráčů
+3. Vypsání nejlepších hráčů
 
    Hráči se zobrazí žebříček nejlepších hráčů, skóre udává počet celkových výher hráče<br> - Databáze hráčů je uložená ve složce /Data jako .json soubor
-5. Ukončení aplikace
+4. Ukončení aplikace
    Hra se po zvolení této možnosti vypne
 
 
